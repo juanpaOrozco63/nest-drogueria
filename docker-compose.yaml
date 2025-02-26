@@ -1,0 +1,19 @@
+services:
+  db:
+    container_name: tienda-db
+    image: postgres:15.1
+    ports:
+      - "5432:5432"  # Mapea el puerto 5433 en el host al 5432 del contenedor
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres-db:
+
+        
+
+
