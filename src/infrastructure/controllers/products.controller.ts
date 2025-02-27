@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { CreateProductDto } from 'src/application/dtos/products/create-product.dto';
 import { UpdateProductDto } from 'src/application/dtos/products/update-product.dto';
-import { ProductUseCase } from 'src/application/use-cases/products/product.use-case';
+import { ProductUseCase } from 'src/application/use-cases/product.use-case';
 
 
 @Controller('products')
