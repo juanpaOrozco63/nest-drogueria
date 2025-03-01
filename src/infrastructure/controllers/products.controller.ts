@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes } from '@nestjs/common';
 import { CreateProductDto } from 'src/application/dtos/products/create-product.dto';
 import { UpdateProductDto } from 'src/application/dtos/products/update-product.dto';
+import { PreciosPipe } from 'src/application/pipes/precios.pipe';
 import { ProductUseCase } from 'src/application/use-cases/product.use-case';
 
 
@@ -9,6 +10,7 @@ export class ProductsController {
   constructor(private readonly productUseCase: ProductUseCase) {}
 
   @Post()
+  @UsePipes(new PreciosPipe())
   create(@Body() createProductDto: CreateProductDto) {
     return this.productUseCase.create(createProductDto);
   }
