@@ -4,10 +4,11 @@ import { ProductUseCase } from './use-cases/product.use-case';
 import { BrandUseCase } from './use-cases/brand.use-case';
 import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { TransformInterceptor } from './interceptors/transform.interceptor';
+import { CategoriesUseCase } from './use-cases/categories.use-case';
 
 @Module({
     imports: [DomainModule],
-    providers: [ProductUseCase,BrandUseCase,LoggerInterceptor,TransformInterceptor],
-    exports: [ProductUseCase,BrandUseCase,LoggerInterceptor,TransformInterceptor]
+    providers: [ProductUseCase,BrandUseCase,CategoriesUseCase,LoggerInterceptor,TransformInterceptor],
+    exports: [ProductUseCase,BrandUseCase,LoggerInterceptor,CategoriesUseCase,TransformInterceptor]
 })
 export class ApplicationModule {}

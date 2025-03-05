@@ -6,9 +6,12 @@ import { Product } from './entities/product.entity';
 import { Brand } from './entities/brand.entity';
 import { BrandRepositoryImpl } from 'src/infrastructure/repositories/brand.repository';
 import { BrandRepository } from './repositories/brand.repository';
+import { CategorieRepositoryImpl } from 'src/infrastructure/repositories/categorie.repository';
+import { CategorieRepository } from './repositories/categorie.repository';
+import { Category } from './entities/category.entity';
 
 @Module({
-    imports:[TypeOrmModule.forFeature([Product,Brand])],
+    imports:[TypeOrmModule.forFeature([Product,Brand,Category])],
     providers:[
         {
             provide:ProductRepository,
@@ -18,9 +21,14 @@ import { BrandRepository } from './repositories/brand.repository';
             provide:BrandRepository,
             useClass:BrandRepositoryImpl
         },
+        {
+            provide:CategorieRepository,
+            useClass:CategorieRepositoryImpl
+        },
+        CategorieRepositoryImpl,
         BrandRepositoryImpl,
         ProductRepositoryImpl
     ],
-    exports:[ProductRepository,BrandRepository]
+    exports:[ProductRepository,BrandRepository,CategorieRepository]
 })
 export class DomainModule {}

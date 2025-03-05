@@ -7,4 +7,5 @@ export abstract class ProductRepository {
   abstract remove(id: number): Promise<void>;
   abstract findOne(id: number): Promise<Product | null>;
   abstract findAll(): Promise<Product[]>;
+  abstract findByName(name: string): Promise<Product[] | null>;
 }

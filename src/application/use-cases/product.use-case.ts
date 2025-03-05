@@ -25,4 +25,7 @@ export class ProductUseCase {
   remove(id: number) {
     return this.productRepository.remove(id);
   }
+  findByName(name: string) {
+    return this.productRepository.findByName(name);
+  }
 }

@@ -7,32 +7,39 @@ import { CreateProductDto } from "src/application/dtos/products/create-product.d
 
 @Injectable()
 export class ProductRepositoryImpl extends ProductRepository {
+
     constructor(
         @InjectRepository(Product)
-        private readonly productRepo: Repository<Product>,
+        private readonly productRepository: Repository<Product>,
     ) {
         super();
     }
 
     async create(product: CreateProductDto): Promise<Product> {
-        const newProduct = this.productRepo.create(product);
-        return await this.productRepo.save(newProduct);
+        const newProduct = this.productRepository.create(product);
+        return await this.productRepository.save(newProduct);
     }
 
     async update(id: number, product: Partial<Product>): Promise<Product> {
-        await this.productRepo.update(id, product);
-        return (await this.productRepo.findOne({ where: { id } }))!;
+        await this.productRepository.update(id, product);
+        return (await this.productRepository.findOne({ where: { id } }))!;
     }
 
     async remove(id: number): Promise<void> {
-        await this.productRepo.delete(id);
+        await this.productRepository.delete(id);
     }
 
     async findOne(id: number): Promise<Product | null> {
-        return await this.productRepo.findOne({ where: { id } });
+        return await this.productRepository.findOne({ where: { id } });
     }
 
     async findAll(): Promise<Product[]> {
-        return await this.productRepo.find();
+        return await this.productRepository.find();
+    }
+        
+    async findByName(name: string): Promise<Product[] | null> {
+      return this.productRepository.createQueryBuilder('product')
+        .where('product.nombre ILIKE :name', { name: `${name}%` })
+        .getMany();
     }
 }
