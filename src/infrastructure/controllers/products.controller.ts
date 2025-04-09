@@ -20,7 +20,7 @@ import { KafkaProducerService } from '../kafka/kafka.producer';
 export class ProductsController {
   constructor(
     private readonly productUseCase: ProductUseCase,
-    private readonly kafkaProducer: KafkaProducerService
+    private readonly kafkaProducer: KafkaProducerService,
   ) {}
 
   @Post()
@@ -52,9 +52,9 @@ export class ProductsController {
     return this.productUseCase.remove(+id);
   }
   @Post('send-message')
-  async sendMessage() {
-    await this.kafkaProducer.sendMessage('test', {
-      mensaje: '¡Hola desde Kafka!',
+  async sendMessage(@Body() body: any) {
+    await this.kafkaProducer.sendMessage('mi-topic', {
+      mensaje: body.message,
     });
     return { message: 'Mensaje enviado a Kafka' };
   }
