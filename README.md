@@ -17,7 +17,7 @@ Este proyecto es una aplicación desarrollada con NestJS para gestionar una tien
 
 2. Asegúrate de tener configurado Docker y Docker Compose.
 
-3. Crea un archivo `.env` en la raíz del proyecto con las variables de entorno necesarias. Puedes basarte en el archivo `.env.example` incluido en el repositorio.
+3. Clona el archivo `.env` en la raíz del proyecto con las variables de entorno necesarias. Puedes basarte en el archivo `.env.template` incluido en el repositorio.
 
 ## Uso
 
@@ -29,6 +29,24 @@ docker-compose up
 
 Esto iniciará los contenedores definidos en el archivo `docker-compose.yml`.
 
+## Arrancar el proyecto con npm
+
+Después de levantar los contenedores de Docker debes arrancar el proyecto localmente con el siguiente comando:
+
+```bash
+npm run start:dev
+```
+
+Asegúrate de tener instaladas las dependencias con `npm install` antes de ejecutar este comando.
+
+## Ejecutar la seed
+
+Si deseas cargar la data inicial en la base de datos, ejecuta el siguiente endpoint:
+
+```bash
+curl --location --request POST 'http://localhost:3000/seed'
+```
+
 ## Endpoints
 
 Una vez que los contenedores estén en ejecución, puedes acceder a la aplicación en [http://localhost:3000](http://localhost:3000).
@@ -36,7 +54,3 @@ Una vez que los contenedores estén en ejecución, puedes acceder a la aplicaci�
 Para acceder a la interfaz de UI Kafka, utiliza el puerto [http://localhost:8080](http://localhost:8080).
 
 Para acceder a la documentación de la API, dirígete a [http://localhost:3000/api-doc](http://localhost:3000/api-doc).
-
-## Licencia
-
-Este proyecto está bajo la licencia [MIT](LICENSE).

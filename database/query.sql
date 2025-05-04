@@ -1,3 +1,12 @@
+-- 0️⃣ Truncar las tablas para eliminar toda la data
+TRUNCATE TABLE products RESTART IDENTITY CASCADE;
+TRUNCATE TABLE brands RESTART IDENTITY CASCADE;
+TRUNCATE TABLE categories RESTART IDENTITY CASCADE;
+-- Reiniciar las secuencias
+ALTER SEQUENCE categories_id_seq RESTART WITH 1;
+ALTER SEQUENCE brands_id_seq RESTART WITH 1;
+ALTER SEQUENCE products_id_seq RESTART WITH 1;
+
 -- 1️⃣ Insertar Categorías
 INSERT INTO categories (nombre, descripcion) VALUES 
 ('Medicamentos', 'Fármacos para diversas enfermedades'),
