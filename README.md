@@ -4,6 +4,11 @@ Este proyecto es una aplicación desarrollada con NestJS para gestionar una tien
 
 ## Requisitos
 
+- [Node.js](https://nodejs.org/) instalado en tu sistema.
+- [Nest CLI](https://docs.nestjs.com/cli/overview) instalado globalmente. Puedes instalarlo con el siguiente comando:
+  ```bash
+  npm install -g @nestjs/cli
+  ```
 - [Docker](https://www.docker.com/) y [Docker Desktop](https://www.docker.com/products/docker-desktop) instalados en tu sistema.
 - [Docker Compose](https://docs.docker.com/compose/) incluido con Docker Desktop o instalado por separado.
 
@@ -11,8 +16,8 @@ Este proyecto es una aplicación desarrollada con NestJS para gestionar una tien
 
 1. Clona este repositorio:
   ```bash
-  git clone https://github.com/tu-usuario/nest-tienda.git
-  cd nest-tienda
+  git clone https://github.com/juanpaOrozco63/nest-tienda.git
+  cd nest-drogueria
   ```
 
 2. Asegúrate de tener configurado Docker y Docker Compose.

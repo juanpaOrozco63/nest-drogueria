@@ -9,7 +9,8 @@ export class CreateCategoryDto {
     type: Number,
   })
   @IsNumber()
-  id: number;
+  @IsOptional()
+  id?: number;
 
   @ApiProperty({
     description: 'Nombre de la categoria',

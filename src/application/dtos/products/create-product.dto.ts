@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsPositive, ValidateNested, IsEnum, MinLength } from 'class-validator';
+import { IsString, IsNumber, IsPositive, ValidateNested, IsEnum, MinLength, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 import { CreateCategoryDto } from '../categories/create-category.dto';
 import { CreateBrandDto } from '../brands/create-brand.dto';
@@ -7,7 +7,8 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateProductDto {
   @ApiProperty({ description: 'ID del producto', type: Number, example: 1 })
   @IsNumber()
-  id: number;
+  @IsOptional()
+  id?: number;
 
   @ApiProperty({ description: 'Nombre del producto', type: String, example: 'Paracetamol' })
   @MinLength(3, {
@@ -41,7 +42,7 @@ export class CreateProductDto {
   @Type(() => CreateBrandDto)
   brand: CreateBrandDto;
 
-  @ApiProperty({ description: 'Precio del producto', type: Number, example: 4.99 })
+  @ApiProperty({ description: 'Precio del producto', type: Number, example: 10000 })
   @IsNumber()
   @IsPositive({
     message: 'El precio debe ser un número positivo',

@@ -9,26 +9,34 @@ import { BrandRepository } from './repositories/brand.repository';
 import { CategorieRepositoryImpl } from 'src/infrastructure/repositories/categorie.repository';
 import { CategorieRepository } from './repositories/categorie.repository';
 import { Category } from './entities/category.entity';
+import { ProductsDomainService } from './services/products-domain.service';
+import { BrandsDomainService } from './services/brands-domain.service';
+import { CategoriesDomainService } from './services/categories-domain.service';
 
 @Module({
-    imports:[TypeOrmModule.forFeature([Product,Brand,Category])],
-    providers:[
-        {
-            provide:ProductRepository,
-            useClass:ProductRepositoryImpl
-        },
-        {
-            provide:BrandRepository,
-            useClass:BrandRepositoryImpl
-        },
-        {
-            provide:CategorieRepository,
-            useClass:CategorieRepositoryImpl
-        },
-        CategorieRepositoryImpl,
-        BrandRepositoryImpl,
-        ProductRepositoryImpl
-    ],
-    exports:[ProductRepository,BrandRepository,CategorieRepository]
+  imports: [TypeOrmModule.forFeature([Product, Brand, Category])],
+  providers: [
+    {
+      provide: ProductRepository,
+      useClass: ProductRepositoryImpl,
+    },
+    {
+      provide: BrandRepository,
+      useClass: BrandRepositoryImpl,
+    },
+    {
+      provide: CategorieRepository,
+      useClass: CategorieRepositoryImpl,
+    },
+    CategorieRepositoryImpl,
+    BrandRepositoryImpl,
+    ProductRepositoryImpl,
+    ProductsDomainService,
+    BrandsDomainService,
+    CategoriesDomainService
+  ],
+  exports: [ProductRepository, BrandRepository, CategorieRepository,
+    ProductsDomainService, BrandsDomainService,CategoriesDomainService
+  ],
 })
 export class DomainModule {}

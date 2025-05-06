@@ -9,7 +9,8 @@ export class CreateBrandDto {
     type: Number,
   })
   @IsNumber()
-  id: number;
+  @IsOptional()
+  id?: number;
 
   @ApiProperty({
     description: 'Nombre de la marca',

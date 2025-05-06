@@ -14,7 +14,9 @@ export class CategorieRepositoryImpl extends CategorieRepository {
   }
 
   async create(categorie: CreateCategoryDto): Promise<Category> {
-    const category = this.categoryRepository.create(categorie);
+      // Eliminar el campo `id` si está presente en el DTO
+      const { id, ...categorieData } = categorie;
+    const category = this.categoryRepository.create(categorieData);
     return this.categoryRepository.save(category);
   }
 
