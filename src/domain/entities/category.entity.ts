@@ -13,6 +13,6 @@ export class Category {
   descripcion: string;
 
   // Relación inversa con Product
-  @OneToMany(() => Product, (product) => product.categorie)
+  @OneToMany(() => Product, (product) => product.categoria)
   products: Product[];
 }

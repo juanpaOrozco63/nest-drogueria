@@ -10,6 +10,6 @@ export class Brand {
   nombre: string;
 
   // Relación inversa con Product
-  @OneToMany(() => Product, (product) => product.brand)
+  @OneToMany(() => Product, (product) => product.marca)
   products: Product[];
 }

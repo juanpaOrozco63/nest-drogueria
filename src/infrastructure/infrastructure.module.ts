@@ -5,9 +5,10 @@ import { BrandsModule } from './modules/brands.module';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { KafkaModule } from './modules/kafka.module';
 import { SeedModule } from './modules/seed.module';
+import { InventoryModule } from './modules/inventory.module';
 
 @Module({
-  imports: [BrandsModule, CategoriesModule, ProductsModule,KafkaModule, SeedModule],
+  imports: [BrandsModule, CategoriesModule, ProductsModule,KafkaModule, SeedModule, InventoryModule],
   exports: [KafkaModule],
 })
 export class InfrastructureModule implements NestModule{

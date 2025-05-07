@@ -12,9 +12,13 @@ import { Category } from './entities/category.entity';
 import { ProductsDomainService } from './services/products-domain.service';
 import { BrandsDomainService } from './services/brands-domain.service';
 import { CategoriesDomainService } from './services/categories-domain.service';
+import { Inventory } from './entities/inventory.entity';
+import { InventoryRepository } from './repositories/inventory.repository';
+import { InventoryRepositoryImpl } from 'src/infrastructure/repositories/inventory.repository';
+import { InventoryDomainService } from './services/inventory-domain.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Product, Brand, Category])],
+  imports: [TypeOrmModule.forFeature([Product, Brand, Category, Inventory])],
   providers: [
     {
       provide: ProductRepository,
@@ -28,15 +32,19 @@ import { CategoriesDomainService } from './services/categories-domain.service';
       provide: CategorieRepository,
       useClass: CategorieRepositoryImpl,
     },
+    {
+      provide: InventoryRepository,
+      useClass: InventoryRepositoryImpl,
+    },
     CategorieRepositoryImpl,
     BrandRepositoryImpl,
     ProductRepositoryImpl,
+    InventoryRepositoryImpl,
     ProductsDomainService,
     BrandsDomainService,
-    CategoriesDomainService
+    CategoriesDomainService,
+    InventoryDomainService,
   ],
-  exports: [ProductRepository, BrandRepository, CategorieRepository,
-    ProductsDomainService, BrandsDomainService,CategoriesDomainService
-  ],
+  exports: [ProductRepository, BrandRepository, CategorieRepository, InventoryRepository, ProductsDomainService, BrandsDomainService, CategoriesDomainService, InventoryDomainService],
 })
 export class DomainModule {}

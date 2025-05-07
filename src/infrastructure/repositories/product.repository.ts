@@ -25,11 +25,11 @@ export class ProductRepositoryImpl extends ProductRepository {
 
   async update(id: number, product: Partial<Product>): Promise<Product> {
      // Verificar si la categoría y la marca existen
-  if (product.categorie) {
-    product.categorie = await this.productRepository.manager.findOneOrFail(Category, { where: { id: product.categorie.id } });
+  if (product.categoria) {
+    product.categoria = await this.productRepository.manager.findOneOrFail(Category, { where: { id: product.categoria.id } });
   }
-  if (product.brand) {
-    product.brand = await this.productRepository.manager.findOneOrFail(Brand, { where: { id: product.brand.id } });
+  if (product.marca) {
+    product.marca = await this.productRepository.manager.findOneOrFail(Brand, { where: { id: product.marca.id } });
   }
 
     await this.productRepository.update(id, product);

@@ -49,13 +49,6 @@ export class CreateProductDto {
   })
   precio: number;
 
-  @ApiProperty({ description: 'Stock del producto', type: Number, example: 50 })
-  @IsNumber()
-  @IsPositive({
-    message: 'El stock debe ser un número positivo',
-  })
-  stock: number;
-
   @ApiProperty({ description: 'SKU del producto', type: String, example: 'SKU98765' })
   @IsString({
     message: 'El SKU debe ser un string',
