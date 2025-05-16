@@ -1,6 +1,6 @@
-# Proyecto Nest Tienda
+# Proyecto Nest Drogueria
 
-Este proyecto es una aplicación desarrollada con NestJS para gestionar una tienda.
+Este proyecto es una aplicación desarrollada con NestJS para gestionar una drogueria.
 
 ## Requisitos
 

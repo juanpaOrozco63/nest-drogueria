@@ -15,17 +15,17 @@ async function bootstrap() {
   );
   app.useGlobalInterceptors(new LoggerInterceptor());
   // Configurar Kafka como un microservicio
-  app.connectMicroservice<MicroserviceOptions>({
-    transport: Transport.KAFKA,
-    options: {
-      client: {
-        brokers: ['localhost:9092'], // Dirección de Kafka
-      },
-      consumer: {
-        groupId: 'my-consumer-group', // Grupo de consumidores
-      },
-    },
-  });
+  // app.connectMicroservice<MicroserviceOptions>({
+  //   transport: Transport.KAFKA,
+  //   options: {
+  //     client: {
+  //       brokers: ['localhost:9092'], // Dirección de Kafka
+  //     },
+  //     consumer: {
+  //       groupId: 'my-consumer-group', // Grupo de consumidores
+  //     },
+  //   },
+  // });
  // Configuración de Swagger
  const config = new DocumentBuilder()
  .setTitle('API de Tienda') // Título de la API

@@ -3,15 +3,13 @@ import { CreateProductDto } from 'src/application/dtos/products/create-product.d
 import { UpdateProductDto } from 'src/application/dtos/products/update-product.dto';
 import { PreciosPipe } from 'src/application/pipes/precios.pipe';
 import { ProductUseCase } from 'src/application/use-cases/product.use-case';
-import { KafkaProducerService } from '../kafka/kafka.producer';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Productos')
 @Controller('products')
 export class ProductsController {
   constructor(
-    private readonly productUseCase: ProductUseCase,
-    private readonly kafkaProducer: KafkaProducerService,
+    private readonly productUseCase: ProductUseCase
   ) {}
 
   @Post()
@@ -67,14 +65,14 @@ export class ProductsController {
     return this.productUseCase.remove(+id);
   }
 
-  @Post('send-message')
-  @ApiOperation({ summary: 'Enviar un mensaje a Kafka' })
-  @ApiResponse({ status: 201, description: 'Mensaje enviado a Kafka exitosamente.' })
-  @ApiResponse({ status: 400, description: 'Datos inválidos.' })
-  async sendMessage(@Body() body: any) {
-    await this.kafkaProducer.sendMessage('mi-topic', {
-      mensaje: body.message,
-    });
-    return { message: 'Mensaje enviado a Kafka' };
-  }
+  // @Post('send-message')
+  // @ApiOperation({ summary: 'Enviar un mensaje a Kafka' })
+  // @ApiResponse({ status: 201, description: 'Mensaje enviado a Kafka exitosamente.' })
+  // @ApiResponse({ status: 400, description: 'Datos inválidos.' })
+  // async sendMessage(@Body() body: any) {
+  //   await this.kafkaProducer.sendMessage('mi-topic', {
+  //     mensaje: body.message,
+  //   });
+  //   return { message: 'Mensaje enviado a Kafka' };
+  // }
 }

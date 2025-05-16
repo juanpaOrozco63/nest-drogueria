@@ -1,0 +1,39 @@
+# Ignorar dependencias instaladas
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Ignorar archivos de salida de compilación
+dist
+build
+
+# Ignorar configuraciones locales y archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Ignorar archivos de logs
+logs
+*.log
+
+# Ignorar datos temporales
+*.pid
+*.seed
+*.pid.lock
+.temp
+.tmp
+
+# Ignorar carpetas de pruebas y cobertura
+test
+coverage
+.nyc_output
+
+# Ignorar configuraciones de IDE/editores
+.idea
+.vscode
+*.sublime-workspace
+
+# Ignorar archivos del sistema operativo
+.DS_Store
+Thumbs.db
